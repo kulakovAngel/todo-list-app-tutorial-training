@@ -36,6 +36,26 @@ app.get('/', async function (req, res) {
     });
 });
 
+app.post('/', async function (req, res) {
+    await ToDoItem.create({
+        title:  req.body.item,
+        isComplete: false,
+    });
+    res.redirect('/');
+});
+
+app.patch('/', async function (req, res) {
+    const item = await ToDoItem.findOne({_id: req.body.id});
+    item.isComplete = !item.isComplete;
+    await item.save();
+    res.redirect('/');
+});
+
+app.delete('/', async function (req, res) {
+    await ToDoItem.findOneAndDelete({_id: req.body.id});
+    res.redirect('/');
+});
+
 app.use(function (req, res) {
     res.status(404).send('Not Found');
 });
