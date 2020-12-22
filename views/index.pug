@@ -1,0 +1,68 @@
+doctype html
+head
+  title To Do List
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+  link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
+  style.
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    main {
+      flex: 1 0 auto;
+    }
+    .completed {
+      text-decoration: line-through;
+    }
+body
+  .navbar-fixed
+    nav
+      .nav-wrapper
+        a.brand-logo.left(href='/')
+          img(src='/logo.png', height=32)
+          |
+          |ToDo-List App. Tutorial training project
+  main
+    .row
+      .col.s12.m8.offset-m2.l6.offset-l3.xl4.offset-xl4
+        .row
+          .input-field.col.s10
+            input#item.autocomplete(type='text', name='item')
+            label(for='item') Your New ToDo Item
+          .input-field.col.s2
+            button(type='submit').btn-floating.pulse.right.blue
+              i.material-icons
+                | send
+        if items.length
+          table.flow-text.highlight.z-depth-5.hoverable
+            tbody
+              each item in items
+                tr
+                  td
+                      input(type='hidden', name='id', value=item.id)
+                      button(type='submit').btn-flat.btn-large.transparent
+                        i(class=item.isComplete?'red-text':'green-text').material-icons
+                          if !item.isComplete
+                            |check_box_outline_blank
+                          else
+                            |check_box
+                  td(class=item.isComplete&&'completed grey-text text-lighten-1') #{item.title}
+                  td
+                      input(type='hidden', name='id', value=item.id)
+                      button(type='submit').btn-flat.btn-large.transparent.pink-text
+                        i.material-icons
+                          |delete
+        else
+          h5 There are no ToDo-items yet...
+
+  footer.page-footer
+    .container
+      .row
+        .col.s12 ToDo-List App. Tutorial training project
+    .footer-copyright
+      .container
+        |&copy; 2020 Kulakov
+        a.grey-text.text-lighten-4.right(href='tel:+375292970770') Сall
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')

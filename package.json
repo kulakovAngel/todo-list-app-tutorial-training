@@ -1,0 +1,25 @@
+{
+  "name": "todo-list-app-tutorial-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kulakovAngel/todo-list-app-tutorial-training"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.11.8",
+    "pug": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.9"
+  }
+}
